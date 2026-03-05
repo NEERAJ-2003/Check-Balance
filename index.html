@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#0b1220" />
+    <title>Check Balance</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="desktopBlock" id="desktopBlock" aria-hidden="true">
+      <div class="desktopCard">
+        <div class="desktopTitle">Mobile only</div>
+        <div class="desktopText">
+          This app is built strictly for mobile screens. Please open it on your phone.
+        </div>
+      </div>
+    </div>
+
+    <main class="appShell" id="appShell">
+      <header class="topBar">
+        <div class="brand">
+          <div class="brandDot" aria-hidden="true"></div>
+          <div class="brandText">
+            <div class="brandTitle">Check Balance</div>
+          </div>
+        </div>
+        <button class="iconBtn" id="logoutBtn" type="button" aria-label="Logout" hidden>
+          <span class="iconBtnText">Logout</span>
+        </button>
+      </header>
+
+      <section class="view viewAuth" id="viewAuth" aria-label="Authentication">
+
+        <div class="segmented" id="authTabs" data-auth="login" role="tablist" aria-label="Auth tabs">
+          <button class="segBtn isActive" id="tabLogin" type="button" role="tab" aria-selected="true">
+            Login
+          </button>
+          <button class="segBtn" id="tabSignup" type="button" role="tab" aria-selected="false">
+            Signup
+          </button>
+        </div>
+
+        <div class="card authCard">
+          <form id="loginForm" class="form" autocomplete="on">
+            <div class="field">
+              <label class="label" for="loginUsername">Username</label>
+              <input
+                class="input"
+                id="loginUsername"
+                type="text"
+                autocomplete="username"
+                placeholder="username"
+                required
+              />
+            </div>
+            <div class="field">
+              <label class="label" for="loginPassword">Password</label>
+              <input
+                class="input"
+                id="loginPassword"
+                type="password"
+                autocomplete="current-password"
+                placeholder="password"
+                required
+              />
+            </div>
+            <button class="primaryBtn" type="submit">Login</button>
+            <button class="ghostLink" id="forgotToggleBtn" type="button">Forgot password</button>
+          </form>
+
+          <form id="forgotForm" class="form isHidden" autocomplete="off">
+            <div class="field">
+              <label class="label" for="forgotUsername">Username</label>
+              <input
+                class="input"
+                id="forgotUsername"
+                type="text"
+                placeholder="Your username"
+                required
+              />
+            </div>
+            <div class="field">
+              <label class="label" for="forgotPassword">New password</label>
+              <input
+                class="input"
+                id="forgotPassword"
+                type="password"
+                autocomplete="new-password"
+                placeholder="New password"
+                required
+                minlength="4"
+              />
+            </div>
+            <div class="field">
+              <label class="label" for="forgotConfirm">Confirm new password</label>
+              <input
+                class="input"
+                id="forgotConfirm"
+                type="password"
+                autocomplete="new-password"
+                placeholder="Repeat new password"
+                required
+                minlength="4"
+              />
+            </div>
+            <button class="primaryBtn" type="submit">Reset password</button>
+            <button class="ghostLink" id="forgotBackBtn" type="button">Back to login</button>
+          </form>
+
+          <form id="signupForm" class="form isHidden" autocomplete="on">
+            <div class="field">
+              <label class="label" for="signupUsername">Username</label>
+              <input
+                class="input"
+                id="signupUsername"
+                type="text"
+                autocomplete="username"
+                placeholder="Choose a username"
+                required
+              />
+            </div>
+            <div class="field">
+              <label class="label" for="signupPassword">Password</label>
+              <input
+                class="input"
+                id="signupPassword"
+                type="password"
+                autocomplete="new-password"
+                placeholder="Create a password"
+                required
+                minlength="4"
+              />
+            </div>
+            <div class="field">
+              <label class="label" for="signupConfirm">Confirm password</label>
+              <input
+                class="input"
+                id="signupConfirm"
+                type="password"
+                autocomplete="new-password"
+                placeholder="Confirm your password"
+                required
+                minlength="4"
+              />
+            </div>
+            <div class="field">
+              <label class="label" for="signupInitial">Initial balance</label>
+              <input
+                class="input"
+                id="signupInitial"
+                type="number"
+                inputmode="decimal"
+                placeholder="Enter the Initial Balance"
+                required
+                step="0.01"
+                min="0"
+              />
+            </div>
+            <button class="primaryBtn" type="submit">Create account</button>
+          </form>
+        </div>
+      </section>
+      
+        <nav class="bottomNav" aria-label="Navigation">
+          <button class="navBtn isActive" id="navHome" type="button" aria-label="Home">
+            <span class="navIcon" aria-hidden="true">●</span>
+            <span class="navText">Home</span>
+          </button>
+          <button class="navBtn" id="navAdd" type="button" aria-label="Credit">
+            <span class="navIcon" aria-hidden="true">＋</span>
+            <span class="navText">Credit / Debit</span>
+          </button>
+          <button class="navBtn" id="navSettings" type="button" aria-label="Settings">
+            <span class="navIcon" aria-hidden="true">⚙</span>
+            <span class="navText">Settings</span>
+          </button>
+        </nav>
+
+      <section class="view viewApp isHidden" id="viewApp" aria-label="Balance app">
+        <section class="panel isActive" id="panelHome" aria-label="Home">
+          <div class="card balanceCard">
+            <div class="balanceRow">
+              <div>
+                <div class="balanceLabel">Current balance</div>
+                <div class="balanceValue" id="balanceValue">0.00</div>
+              </div>
+            </div>
+            <div class="balanceMeta">
+              <div class="metaItem">
+                <div class="metaLabel">Credits</div>
+                <div class="metaValue isGood" id="creditValue">0.00</div>
+              </div>
+              <div class="metaItem">
+                <div class="metaLabel">Debits</div>
+                <div class="metaValue isBad" id="debitValue">0.00</div>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="sectionTitleRow">
+            <div class="sectionTitle">Transactions</div>
+            <button class="ghostBtn" id="clearFiltersBtn" type="button" hidden>Clear</button>
+          </div>
+
+          <div class="card listCard">
+            <div class="emptyState" id="emptyState">
+              <div class="emptyTitle">No transactions yet</div>
+              <div class="emptySub">Go to Credit and record your first credit or debit.</div>
+            </div>
+            <ul class="txList" id="txList" aria-label="Transactions list"></ul>
+          </div>
+        </section>
+
+        <section class="panel" id="panelAdd" aria-label="Credit transaction">
+          <div class="card">
+            <div class="sectionTitle">Credit / Debit</div>
+            <div class="segmented mini" id="txTypeTabs" role="tablist" aria-label="Transaction type">
+              <button class="segBtn isActive" id="typeCredit" type="button" role="tab" aria-selected="true">
+                Credit
+              </button>
+              <button class="segBtn" id="typeDebit" type="button" role="tab" aria-selected="false">
+                Debit
+              </button>
+            </div>
+
+            <form class="form" id="txForm" autocomplete="off">
+              <div class="field">
+                <label class="label" for="txAmount">Amount</label>
+                <input
+                  class="input"
+                  id="txAmount"
+                  type="number"
+                  inputmode="decimal"  
+                  required
+                  step="0.01"
+                  min="0.01"
+                />
+              </div>
+              <div class="field">
+                <label class="label" for="txNote">Note</label>
+                <input class="input" id="txNote" type="text"/>
+              </div>
+              <button class="primaryBtn" type="submit" id="txSubmitBtn">Credit amount</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="panel" id="panelSettings" aria-label="Settings">
+          <div class="card">
+            <div class="sectionTitle">Settings</div>
+            <form class="form" id="settingsForm" autocomplete="off">
+              <div class="field">
+                <label class="label" for="initialInput">Fix initial balance</label>
+                <input
+                  class="input"
+                  id="initialInput"
+                  type="number"
+                  inputmode="decimal"
+                  placeholder="0"
+                  required
+                  step="0.01"
+                  min="0"
+                />
+                <div class="micro" id="initialHelp">This changes the starting balance for calculations.</div>
+              </div>
+              <button class="primaryBtn" id="saveInitialBtn" type="submit">Save initial balance</button>
+            </form>
+          </div>
+
+          <div class="card dangerCard">
+            <div class="dangerTitle">Account</div>
+            <button class="dangerBtn" id="wipeBtn" type="button">Delete all transactions</button>
+          </div>
+        </section>
+
+
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="modalOverlay isHidden" id="modalOverlay" aria-hidden="true">
+      <div class="modalCard" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+        <div class="modalTitle" id="modalTitle">Confirm</div>
+        <div class="modalDesc" id="modalDesc">Are you sure?</div>
+        <div class="modalActions">
+          <button class="ghostBtn" id="modalCancel" type="button">Cancel</button>
+          <button class="dangerBtn" id="modalConfirm" type="button">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
